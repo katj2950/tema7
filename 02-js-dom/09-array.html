@@ -28,5 +28,8 @@
 
 	<script>
 		let playlist = ["Tough Love", "Dance in the dark", "Here comes a thought", "Mamma Mia", "From Now on", "One day more", "Call of the Guardians", "Still dream", "The ballad of Midsomer County", "The Dragonborn comes"];
+		playlist.forEach(sang => {
+			document.querySelector("#display").innerHTML += `${sang} <br>`
+		})
 	</script>
 </body></html>
