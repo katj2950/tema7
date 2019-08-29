@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>objekt</title>
+	<style></style>
+</head>
+
+<body>
+	<article>
+		<h1></h1>
+		<h2></h2>
+		<p class=""></p>
+		<img src="" alt="">
+	</article>
+
+	<script>
+		const dyr = [{
+				"dyr": "gris",
+				"type": "pattedyr",
+				"levested": "fra grisefarmen",
+				"billede": "http://mabe-kea.dk/E19/pics/pig.png"
+			}, {
+				"dyr": "frø",
+				"type": "amfibie",
+				"levested": "fra vandhullet",
+				"billede": "http://mabe-kea.dk/E19/pics/frog.png"
+			},
+			{
+				"dyr": "ræv",
+				"type": "pattedyr",
+				"levested": "fra skoven",
+				"billede": "http://mabe-kea.dk/E19/pics/fox.png"
+			},
+			{
+				"dyr": "sild",
+				"type": "fisk",
+				"levested": "fra  havet",
+				"billede": "http://mabe-kea.dk/E19/pics/sild.png"
+			}, {
+				"dyr": "krokodille",
+				"type": "krybdyr",
+				"levested": "fra floden",
+				"billede": "http://mabe-kea.dk/E19/pics/kroko.png"
+			}
+
+		]
+		let tekst = "" + dyr.dyr + ",  " + dyr.levested;
+
+
+		dyr.forEach(dyrene => {
+			console.log(`${dyrene.dyr} ${dyrene.type} ${dyrene.levested}`)
+		})
+	</script>
+</body></html>
