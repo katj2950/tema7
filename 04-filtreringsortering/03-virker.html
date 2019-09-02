@@ -62,24 +62,31 @@
 			}
 		}
 
-		header {
+		.menu {
 			margin: 20px;
 			padding: 20px;
 			position: relative;
-			left: 500px;
+			left: 400px;
 
+		}
+
+		h1 {
+			font-family: sans-serif;
+			position: relative;
+			left: 500px;
 		}
 	</style>
 
 
 
 </head>
-<header>
+<h1>Alle</h1>
+<nav class="menu">
 	<button class="filter valgt" data-køn="alle">Alle</button>
 	<button class="filter" data-køn="m">Mænd</button>
 	<button class="filter" data-køn="k">Kvinder</button>
 	<button class="filter" data-køn="andet">Andet</button>
-</header>
+</nav>
 
 <body>
 	<template>
@@ -131,6 +138,7 @@
 
 		function filtrering() {
 			filter = this.dataset.køn;
+			document.querySelector("h1").textContent = this.textContent;
 			visElever();
 		}
 	</script>

@@ -62,24 +62,31 @@
 			}
 		}
 
-		header {
+		.menu {
 			margin: 20px;
 			padding: 20px;
 			position: relative;
-			left: 500px;
+			left: 400px;
 
+		}
+
+		h1 {
+			font-family: sans-serif;
+			position: relative;
+			left: 500px;
 		}
 	</style>
 
 
 
 </head>
-<header>
+<h1>Alle</h1>
+<nav class="menu">
 	<button class="filter valgt" data-køn="alle">Alle</button>
 	<button class="filter" data-køn="m">Mænd</button>
 	<button class="filter" data-køn="k">Kvinder</button>
 	<button class="filter" data-køn="andet">Andet</button>
-</header>
+</nav>
 
 <body>
 	<template>
@@ -108,12 +115,13 @@
 			elever = await jsonData.json();
 			console.log(elever);
 			visElever();
+			addEventListenersToButtons();
 		}
 
 		function visElever() {
 			dest.innerHTML = "";
 			elever.feed.entry.forEach((elev) => {
-				if (filter == "alle" || filter == person.gsx$køn.$t) {
+				if (filter == "alle" || filter == elev.gsx$køn.$t) {
 					const klon = temp.cloneNode(true).content;
 					klon.querySelector("h2").textContent = elev.gsx$navn.$t;
 					klon.querySelector("#github").textContent = elev.gsx$github.$t;
@@ -123,14 +131,19 @@
 			})
 		}
 
-		function addEventListernersToButtons() {
+		function addEventListenersToButtons() {
 			document.querySelectorAll(".filter").forEach(elm => {
-				elm.addEventListener("click", filtering);
+				elm.addEventListener("click", filtrering);
 			})
 		}
 
 		function filtrering() {
 			filter = this.dataset.køn;
+			document.querySelector("h1").textContent = this.textContent;
+			document.querySelectorAll(".filter").forEach(elm => {
+				elm.classList.remove("valgt");
+			})
+			this.classList.add("valgt");
 			visElever();
 		}
 	</script>
