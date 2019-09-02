@@ -66,7 +66,7 @@
 			margin: 20px;
 			padding: 20px;
 			position: relative;
-			left: 600px;
+			left: 500px;
 
 		}
 
@@ -80,9 +80,9 @@
 
 </head>
 <header>
-	<button class="filter" data-køn="alle">Alle</button>
+	<button class="filter-valgt" data-køn="alle">Alle</button>
 	<button class="filter" data-køn="m">Mænd</button>
-	<button class="filter-valgt" data-køn="k">Kvinder</button>
+	<button class="filter" data-køn="k">Kvinder</button>
 	<button class="filter" data-køn="andet">Andet</button>
 </header>
 
@@ -102,7 +102,7 @@
 
 		const dest = document.querySelector("#liste");
 		const temp = document.querySelector("template");
-		let filter = "k";
+		let filter = "alle";
 
 		document.addEventListener("DOMContentLoaded", getJson);
 
@@ -116,6 +116,7 @@
 		}
 
 		function visElever() {
+			dest.innerHTML = "";
 			elever.feed.entry.forEach((elev) => {
 				if (elev.gsx$køn.$t == filter) {
 					const klon = temp.cloneNode(true).content;
@@ -125,6 +126,17 @@
 					dest.appendChild(klon);
 				}
 			})
+		}
+
+		function addEventListernersToButtons() {
+			document.querySelectorAll(".filter").forEach(elm => {
+				elm.addEventListener("click", filtering);
+			})
+		}
+
+		function filtrering() {
+			filter = this.dataset.køn;
+			visElever();
 		}
 	</script>
 </body></html>
